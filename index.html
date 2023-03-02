@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+
+<head>
+    <title>Wiki Quiz</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="favicon.png" sizes="all">
+
+    <!-- Ajustement de la taille du viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Polices de caractères utilisées-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+
+    <!-- Polices d'icônes utilisées-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- Références aux CSS-->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+     <!-- Curseur personnalisé -->
+     <div class="curseur"></div>
+     <!--Conteneur du carrousel d'image en fond d'écran-->
+     <div class="carrousel-images">
+     <main class="intro">
+       <div><h1 class="anim-titre-intro">Wiki Quiz</h1></div>
+       <div><h2 class="anim-sous-titre-intro">Teste tes connaissances et découvre des sujets inspirés de l'encyclopédie libre Wikipédia</h2></div>
+       <div class="intro-consigne"></div>
+           <footer><h4>Noémie da Silva 2022. TIM, Collège de Maisonneuve</h4></footer>
+    </main>
+
+    <main class="quiz">
+        <header>
+           Wiki Quiz
+           <div class="categorie"></div>
+        </header>
+
+        <section>
+                <div class="titre-question"></div>
+            <div class="les-choix-de-reponse"></div>
+            
+        </section>
+        <div class="barre-avancement"></div>
+    </main>
+
+    <main class="fin">
+        <!-- La section contenant le score sera insérée dynamiquement ici -->
+        <span class="material-icons btn-recommencer">replay</span>
+    </main>
+</div>
+    <!-- Chargement des scripts -->
+    <script src="js/questionsQuiz.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
