@@ -5,608 +5,619 @@
 *,
 ::before,
 ::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
 }
-
 
 /* Variables personnalisées
 ============================================================*/
 :root {
-    /*Couleurs des textes*/
-    --premiere-couleur: pink;
-    --deuxieme-couleur: gold;
-    --troisieme-couleur:  rgb(27, 9, 15);;
-    --quatrieme-couleur: rgba(0, 162, 255, 0.4);
+  /*Couleurs des textes*/
+  --premiere-couleur: pink;
+  --deuxieme-couleur: gold;
+  --troisieme-couleur: rgb(27, 9, 15);
+  --quatrieme-couleur: rgba(0, 162, 255, 0.4);
 
-      /*couleurs des ombres */
-    --cinquieme-couleur: rgb(131, 12, 93); /*Aussi pour du texte - barre d'avancement*/
-    --ombre-couleur: rgb(39, 55, 68);
+  /*couleurs des ombres */
+  --cinquieme-couleur: rgb(
+    131,
+    12,
+    93
+  ); /*Aussi pour du texte - barre d'avancement*/
+  --ombre-couleur: rgb(39, 55, 68);
 
-    /*Les polices */
-    --police-sans: 'Roboto', sans-serif;
-    --police-avec: 'Roboto Slab', serif;
+  /*Les polices */
+  --police-sans: "Roboto", sans-serif;
+  --police-avec: "Roboto Slab", serif;
 
-    /*Padding ou margin de base*/
-    --espacement: 1rem;
+  /*Padding ou margin de base*/
+  --espacement: 1rem;
 }
-
 
 /* Mise en page générale
 ============================================================*/
 html {
-    width: 100vw;
-    height: 100vh;
-    max-width: 100%;
-    max-height: 100vh;
-    font-family: var(--police-sans);
-    font-weight: 700;
-    color: var(--troisieme-couleur);
-    /* Ajustement de la taille des polices à la racine du document */
-    font-size: clamp(14px, 0.65rem + 0.75vw, 24px);
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100vh;
+  font-family: var(--police-sans);
+  font-weight: 700;
+  color: var(--troisieme-couleur);
+  /* Ajustement de la taille des polices à la racine du document */
+  font-size: clamp(14px, 0.65rem + 0.75vw, 24px);
 }
 
 body {
-    max-width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  max-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
-    /*Couleur de fond quand l'image ne couvre pas toute la largeur */
-    background-color: black;
+  /*Couleur de fond quand l'image ne couvre pas toute la largeur */
+  background-color: black;
 }
 
 /*Dans style.js, le setInterval change les images */
 .carrousel-images {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    justify-content: center;
-    align-items: center;
-    /*Les images sont mises en JS - dans style.js*/
-    background-repeat: no-repeat;
-    background-position: top center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  /*Les images sont mises en JS - dans style.js*/
+  background-repeat: no-repeat;
+  background-position: top center;
+  opacity: 0;
+}
+
+.carrousel_img-activer {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; /* Ajoutez une transition de 0,5 seconde avec un effet d'entrée/sortie en douceur */
+}
+
+
+/* Animations CSS
+        =============================================== */
+@keyframes apparition-image {
+  0%, 100% {
+    opacity: 1;
+  }
+45%, 65% {
+    opacity: 1;
+}
+  50% {
+    opacity: 0.1;
+  }
 }
 
 main {
-    width: 100%;
-    max-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1 1 auto;
-    /*Filtre de couleur par dessus les images*/
-    animation: changer-couleur 9s infinite;
+  width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+  /*Filtre de couleur par dessus les images*/
+  animation: changer-couleur 9s infinite;
 }
-
 
 /* Animations CSS: changer-couleur
         =============================================== */
 @keyframes changer-couleur {
+  from,
+  to {
+    background-color: rgba(0, 162, 255, 0.5);
+  }
 
-    from,
-    to {
-        background-color: rgba(0, 162, 255, 0.5);
-    }
+  25% {
+    background-color: rgba(19, 181, 54, 0.5);
+  }
 
-    25% {
-        background-color: rgba(19, 181, 54, 0.5);
-    }
+  50% {
+    background-color: rgba(239, 247, 8, 0.5);
+  }
 
-    50% {
-        background-color: rgba(239, 247, 8, 0.5);
-    }
-
-    75% {
-        background-color: rgba(247, 8, 24, 0.5);
-    }
+  75% {
+    background-color: rgba(247, 8, 24, 0.5);
+  }
 }
 
 section {
-    width: 100vw;
-    height: 85vh;
-    font-size: 2rem;
-    text-align: center;
-    /*Conteneur flex colonne*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 85vh;
+  font-size: 2rem;
+  text-align: center;
+  /*Conteneur flex colonne*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 
 /* Curseur personnalisé*/
 /* ========================================================================== */
 .curseur {
-    position: fixed;
-    height: 1.4rem;
-    width: 1.4rem;
-    background-color: var(--deuxieme-couleur);
-    border-radius: 50%;
-    top: -0.7rem;
-    left: -0.7rem;
-    pointer-events: none;
-    z-index: 500;
-    will-change: transform;
+  position: fixed;
+  height: 1.4rem;
+  width: 1.4rem;
+  background-color: var(--deuxieme-couleur);
+  border-radius: 50%;
+  top: -0.7rem;
+  left: -0.7rem;
+  pointer-events: none;
+  z-index: 500;
+  will-change: transform;
 }
 
 .curseur::after {
-    content: "";
-    position: absolute;
-    border: 2px dotted var(--troisieme-couleur);
-    width: 2.6rem;
-    height: 2.6rem;
-    border-radius: 50%;
-    top: -0.6rem;
-    left: -0.6rem;
-    animation: animer-curseur 500ms infinite;
+  content: "";
+  position: absolute;
+  border: 2px dotted var(--troisieme-couleur);
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  top: -0.6rem;
+  left: -0.6rem;
+  animation: animer-curseur 500ms infinite;
 }
 
 @keyframes animer-curseur {
-    from {
-        transform: scale(1);
-    }
+  from {
+    transform: scale(1);
+  }
 
-    to {
-        transform: scale(1.2);
-    }
+  to {
+    transform: scale(1.2);
+  }
 }
-
-
 
 /* Animation et style du titre de l'intro*/
 /* ========================================================================== */
 
 .anim-titre-intro {
-    font-family: var(--police-avec);
-    font-weight: 700;
-    color: var(--premiere-couleur);
-    text-shadow: 8px 4px 4px var(--ombre-couleur);
-    text-align: center;
-    font-size: 8rem;
-    animation: montrer-mot 350ms, tourner-mot 1250ms 350ms cubic-bezier(1, .04, 0, .9);
-    padding: var(--espacement);
+  font-family: var(--police-avec);
+  font-weight: 700;
+  color: var(--premiere-couleur);
+  text-shadow: 8px 4px 4px var(--ombre-couleur);
+  text-align: center;
+  font-size: 8rem;
+  animation: montrer-mot 350ms,
+    tourner-mot 1250ms 350ms cubic-bezier(1, 0.04, 0, 0.9);
+  padding: var(--espacement);
 }
-
 
 @keyframes montrer-mot {
-    from {
-        transform: scale(800%);
-    }
-    to {
-        transform: scaleY(100%);
-    }
+  from {
+    transform: scale(800%);
+  }
+  to {
+    transform: scaleY(100%);
+  }
 }
-
 
 @keyframes tourner-mot {
+  from,
+  to {
+    transform: rotate3D(0, 0, 0);
+  }
 
-    from,
-    to {
-        transform: rotate3D(0, 0, 0);
-    }
-
-    50% {
-        transform: rotate3D(1, 1, 1, 2turn);
-    }
-
+  50% {
+    transform: rotate3D(1, 1, 1, 2turn);
+  }
 }
-
 
 /* Animation et style du sous-titre de l'intro*/
 /* ========================================================================== */
 
-
 .anim-sous-titre-intro {
-    /* N'est pas visible au démarrage - le deviendra en JS*/
-    opacity: 0;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--troisieme-couleur);
-    text-shadow: 1px 1px 1px var(--cinquieme-couleur);
-    padding: var(--espacement);
-    animation: arrivee 800ms 1050ms cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+  /* N'est pas visible au démarrage - le deviendra en JS*/
+  opacity: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--troisieme-couleur);
+  text-shadow: 1px 1px 1px var(--cinquieme-couleur);
+  padding: var(--espacement);
+  animation: arrivee 800ms 1050ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 
 /*Ligne sous le sous-titre*/
 .anim-sous-titre-intro::after {
-    content: "";
-    height: 0.5vh;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
-    border-radius: 100%;
-    opacity: 0.8;
-    background-image: linear-gradient(-270deg, rgba(255, 255, 255, 0) 0%, var(--premiere-couleur) 20%, var(--premiere-couleur) 80%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 0.5vh;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  border-radius: 100%;
+  opacity: 0.8;
+  background-image: linear-gradient(
+    -270deg,
+    rgba(255, 255, 255, 0) 0%,
+    var(--premiere-couleur) 20%,
+    var(--premiere-couleur) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
-
 
 /* Animation du sous-titre de l'intro*/
 /* ========================================================================== */
 @keyframes arrivee {
-    from {
-        transform: translateX(-100vw);
-        opacity: 0;
-    }
+  from {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
 
-    to {
-        transform: translateX(0vw);
-        opacity: 1;
-    }
+  to {
+    transform: translateX(0vw);
+    opacity: 1;
+  }
 }
 
 /*Sera appliqué en JS */
 .intro-consigne {
-    width: 100%;
-    opacity: 0;
-    flex: 1 1 100%;
-    background-color: var(--quatrieme-couleur);
-    transition: opacity 1s;
+  width: 100%;
+  opacity: 0;
+  flex: 1 1 100%;
+  background-color: var(--quatrieme-couleur);
+  transition: opacity 1s;
 }
 
 .intro-consigne h3 {
-    position: relative;
-    /* top: 2rem; */
-    font-size: 1.6rem;
-    text-align: center;
-    color: var(--deuxieme-couleur);
-    text-shadow: 6px 4px 6px var(--ombre-couleur);
+  position: relative;
+  /* top: 2rem; */
+  font-size: 1.6rem;
+  text-align: center;
+  color: var(--deuxieme-couleur);
+  text-shadow: 6px 4px 6px var(--ombre-couleur);
 }
 
-
 footer {
-    min-height: 4vh;
-    width: 100%;
-    text-align: center;
-    font-size: 0.7rem;
-    font-weight: 100;
-    color: var(--premiere-couleur);
-    border-top: 0.3vh solid var(--premiere-couleur);
-    background-color: var(--troisieme-couleur);
+  min-height: 4vh;
+  width: 100%;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 100;
+  color: var(--premiere-couleur);
+  border-top: 0.3vh solid var(--premiere-couleur);
+  background-color: var(--troisieme-couleur);
 
-    /*Conteneur flex en rangée*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /*Conteneur flex en rangée*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    /*Ne peut rétrécir comme item flex*/
-    flex: 0 0 auto;
+  /*Ne peut rétrécir comme item flex*/
+  flex: 0 0 auto;
 
-    /*Est positionné en bas complètement*/
-    position: absolute;
-    bottom: 0; 
+  /*Est positionné en bas complètement*/
+  position: absolute;
+  bottom: 0;
 }
 
 /*On ajoute le symbole de copyright et un espace*/
 footer h4::before {
-    content: "\00a9 \a0";
-    position: relative;
+  content: "\00a9 \a0";
+  position: relative;
 }
-
 
 /*******************LE QUIZ******************************/
 
 header {
-    min-height: 18vh;
-    width: 100%;
-    text-shadow: 8px 4px 4px var(--ombre-couleur);
-    text-align: center;
-    border-bottom: 0.3vh solid var(--premiere-couleur);
+  min-height: 18vh;
+  width: 100%;
+  text-shadow: 8px 4px 4px var(--ombre-couleur);
+  text-align: center;
+  border-bottom: 0.3vh solid var(--premiere-couleur);
 
-    /*Conteneur flex en colonne*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  /*Conteneur flex en colonne*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    /*Ne peut rétrécir comme item flex*/
-    flex: 0 0 auto;
+  /*Ne peut rétrécir comme item flex*/
+  flex: 0 0 auto;
 }
 
-main.quiz>header {
-    font-family: var(--police-avec);
-    font-size: 4.4rem;
-    color: var(--premiere-couleur);
-    padding: var(--espacement);
+main.quiz > header {
+  font-family: var(--police-avec);
+  font-size: 4.4rem;
+  color: var(--premiere-couleur);
+  padding: var(--espacement);
 }
 
 .categorie {
-    font-size: 1rem;
-    text-shadow: 2px 2px 2px var(--quatrieme-couleur);
-    width: 90%;
-    margin-top: 2rem;
-    position: relative;
-    color: var(--troisieme-couleur);
-    font-family: var(--police-sans);
+  font-size: 1rem;
+  text-shadow: 2px 2px 2px var(--quatrieme-couleur);
+  width: 90%;
+  margin-top: 2rem;
+  position: relative;
+  color: var(--troisieme-couleur);
+  font-family: var(--police-sans);
 }
 
 /* Les catégories seront misent par JS - on ajoute ici le mot*/
 .categorie::before {
-    content: "Catégorie : ";
+  content: "Catégorie : ";
 }
 
 /* Mise en page des questions du quiz
 ============================================================*/
 main.quiz {
-    max-height: 100%;
-    /*Conteneur flex en colonne*/
-    flex-direction: column;
+  max-height: 100%;
+  /*Conteneur flex en colonne*/
+  flex-direction: column;
 
-    /*N'est pas affiché au démarrage*/
-    display: none;
+  /*N'est pas affiché au démarrage*/
+  display: none;
 }
 
-
-main.quiz>section {
-    background-color: var(--quatrieme-couleur);
+main.quiz > section {
+  background-color: var(--quatrieme-couleur);
 }
-
 
 section .titre-question {
-    font-size: 1.6rem;
-    text-shadow: 1px 1px 1px var(--cinquieme-couleur);
-    width: 90%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  font-size: 1.6rem;
+  text-shadow: 1px 1px 1px var(--cinquieme-couleur);
+  width: 90%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 div.les-choix-de-reponse {
-    width: 75vw;;
-    /*Étirement comme item flex*/
-    flex: 1 1 0%;
-    /*Conteneur flex en colonne*/
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+  width: 75vw;
+  /*Étirement comme item flex*/
+  flex: 1 1 0%;
+  /*Conteneur flex en colonne*/
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-
 div.les-choix-de-reponse.desactiver {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 div.choix {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 60vmin;
-    height: 20vmin;
-    border-radius: 5%;
-    box-shadow: 5px 10px 10px var(--ombre-couleur);
-    text-shadow: 2px 5px 5px var(--ombre-couleur);
-    font-size: 1.2rem;
-    color: var(--deuxieme-couleur);
-    position: relative;
-    transition: transform 0.5s;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60vmin;
+  height: 20vmin;
+  border-radius: 5%;
+  box-shadow: 5px 10px 10px var(--ombre-couleur);
+  text-shadow: 2px 5px 5px var(--ombre-couleur);
+  font-size: 1.2rem;
+  color: var(--deuxieme-couleur);
+  position: relative;
+  transition: transform 0.5s;
+  margin-bottom: 1rem;
 }
 
 /*Ligne sous le choix*/
 div.choix::before {
-    content: "";
-    height: 0.15rem;
-    position: absolute;
-    bottom: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    opacity: 0.7;
-    background-image: linear-gradient(-270deg, rgba(255, 255, 255, 0.00) 0%, var(--premiere-couleur) 20%, var(--premiere-couleur) 80%, rgba(255, 255, 255, 0.00) 100%);
+  content: "";
+  height: 0.15rem;
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  opacity: 0.7;
+  background-image: linear-gradient(
+    -270deg,
+    rgba(255, 255, 255, 0) 0%,
+    var(--premiere-couleur) 20%,
+    var(--premiere-couleur) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 div.choix:hover,
 div.choix:active {
-    transform: translateY(-1.5rem) scale(1.2);
-    color: var(--premiere-couleur);
+  transform: translateY(-1.5rem) scale(1.2);
+  color: var(--premiere-couleur);
 }
-
 
 /* Styles pour la rétroaction lors de la validation du choix de réponse */
 div.choix.reponse-succes {
-    animation: animer-reponse-succes 2s;
-    color: rgb(0, 204, 61);
-    background-color: rgba(0, 204, 61, 0.5);
-    transition: background-color 500ms;
+  animation: animer-reponse-succes 2s;
+  color: rgb(0, 204, 61);
+  background-color: rgba(0, 204, 61, 0.5);
+  transition: background-color 500ms;
 }
 
 div.choix.reponse-echec {
-    animation: animer-reponse-echec 2s;
-    color: rgb(230, 44, 41);
-    background-color: rgba(230, 44, 41, 0.5);
-    transition: background-color 500ms;
+  animation: animer-reponse-echec 2s;
+  color: rgb(230, 44, 41);
+  background-color: rgba(230, 44, 41, 0.5);
+  transition: background-color 500ms;
 }
 
 /* Animation du choix de réponse */
 /* ========================================================================== */
 @keyframes animer-reponse-succes {
+  from,
+  70%,
+  end {
+    transform: translateY(0);
+  }
 
-    from,
-    70%,
-    end {
-        transform: translateY(0);
-    }
+  10%,
+  30%,
+  50% {
+    transform: translateY(-5%);
+  }
 
-    10%,
-    30%,
-    50% {
-        transform: translateY(-5%);
-    }
-
-    20%,
-    40%,
-    60% {
-        transform: translateY(5%);
-    }
+  20%,
+  40%,
+  60% {
+    transform: translateY(5%);
+  }
 }
 
 @keyframes animer-reponse-echec {
+  from,
+  70%,
+  end {
+    transform: translateX(0);
+  }
 
-    from,
-    70%,
-    end {
-        transform: translateX(0);
-    }
+  10%,
+  30%,
+  50% {
+    transform: translateX(-5%);
+  }
 
-    10%,
-    30%,
-    50% {
-        transform: translateX(-5%);
-    }
-
-    20%,
-    40%,
-    60% {
-        transform: translateX(5%);
-    }
+  20%,
+  40%,
+  60% {
+    transform: translateX(5%);
+  }
 }
-
 
 /* La barre qui illustre l'avancement du quiz */
 .barre-avancement {
-    width: 0vw;
-    height: 4vh;
-    background-color: var(--troisieme-couleur);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
+  width: 0vw;
+  height: 4vh;
+  background-color: var(--troisieme-couleur);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .info-question {
-    padding-right: var(--espacement);
-    color: var(--cinquieme-couleur)
+  padding-right: var(--espacement);
+  color: var(--cinquieme-couleur);
 }
-
 
 /* Section du résultat */
 /* ========================================================================== */
 main.fin {
-    height: 100vh;
-    font-size: 5rem;
-    /*Non affiché au démarrage -- par JS*/
-    display: none;
+  height: 100vh;
+  font-size: 5rem;
+  /*Non affiché au démarrage -- par JS*/
+  display: none;
 }
 
 @keyframes animer-resultat {
-
-    from {
-        opacity: scale(0);
-    }
-    to {
-        transform: scale(1);
-    }
-
+  from {
+    opacity: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 main.fin .resultat {
-
-    width: 80%;
-    height: 80%;
-    text-shadow: 2px 2px 2px var(--cinquieme-couleur);
-    /*Conteneur flex en colonne*/
-    flex-direction: column;
-    gap: var(--espacement);
-    background-color: var(--quatrieme-couleur);
-    box-shadow: 4px 10px 18px var(--cinquieme-couleur);
-    transform: scale(0) rotateZ(0);
-    animation: animer-resultat 1s cubic-bezier(1,1.62,.61,.61) forwards;
-    font-size: 1.4rem;
+  width: 80%;
+  height: 80%;
+  text-shadow: 2px 2px 2px var(--cinquieme-couleur);
+  /*Conteneur flex en colonne*/
+  flex-direction: column;
+  gap: var(--espacement);
+  background-color: var(--quatrieme-couleur);
+  box-shadow: 4px 10px 18px var(--cinquieme-couleur);
+  transform: scale(0) rotateZ(0);
+  animation: animer-resultat 1s cubic-bezier(1, 1.62, 0.61, 0.61) forwards;
+  font-size: 1.4rem;
 }
 
 /*Ligne */
 .resultat::after {
-    content: "";
-    height: 0.15rem;
-    position: absolute;
-    bottom: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    opacity: 0.7;
-    box-shadow: 2px 2px 2px var(--cinquieme-couleur);
-    background-image: linear-gradient(-270deg, rgba(255, 255, 255, 0.00) 0%, var(--troisieme-couleur) 20%, var(--troisieme-couleur) 80%, rgba(255, 255, 255, 0.00) 100%);
+  content: "";
+  height: 0.15rem;
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  opacity: 0.7;
+  box-shadow: 2px 2px 2px var(--cinquieme-couleur);
+  background-image: linear-gradient(
+    -270deg,
+    rgba(255, 255, 255, 0) 0%,
+    var(--troisieme-couleur) 20%,
+    var(--troisieme-couleur) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
-
 
 main.fin .btn-recommencer {
-    cursor: pointer;
-    font-size: 3rem;
-    margin-top: 2rem;
-    opacity: 0;
-    transition: opacity 2s;
+  cursor: pointer;
+  font-size: 3rem;
+  margin-top: 2rem;
+  opacity: 0;
+  transition: opacity 2s;
 }
-
 
 /* Ajustement pour les écrans de taille moyenne et plus grande
 =============================================================== */
 @media screen and (min-width: 768px) {
+  section .titre-question {
+    font-size: 2rem;
+    padding: 0 6rem 0 6rem;
+  }
 
-    section .titre-question {
-        font-size: 2rem;
-        padding: 0 6rem 0 6rem;
-    }
+  section .les-choix-de-reponse {
+    /*Conteneur flex en rangée*/
+    flex-direction: row;
+  }
 
-    section .les-choix-de-reponse {
-        /*Conteneur flex en rangée*/
-        flex-direction: row;
-    }
-
-    div .choix {
-        margin: 0.4rem;
-        padding: var(--espacement);
-        width: 30vmin;
-        height: 30vmin;
-    }
+  div .choix {
+    margin: 0.4rem;
+    padding: var(--espacement);
+    width: 30vmin;
+    height: 30vmin;
+  }
 }
 
 @media screen and (min-width: 992px) {
+  .anim-sous-titre-intro {
+    text-align: center;
+  }
 
-    .anim-sous-titre-intro {
-        text-align: center;
-    }
+  .intro-consigne h3 {
+    font-size: 1.8rem;
+  }
 
-    .intro-consigne h3 {
-        font-size: 1.8rem;
-    }
+  footer {
+    border-top: none;
+  }
 
-    footer {
-        border-top: none;
-    }
+  main.quiz > header {
+    font-size: 5rem;
+  }
 
+  /*largeur maximale est la largeur rélle des plus grandes images dans le dossier media (1600px)*/
+  section > div,
+  main.intro > div {
+    max-width: 1600px;
+  }
 
-    main.quiz>header {
-        font-size: 5rem;
-    }
+  main.intro > div {
+    flex: 1 1 100%;
+  }
 
-       /*largeur maximale est la largeur rélle des plus grandes images dans le dossier media (1600px)*/
-    section>div,
-    main.intro>div {
-        max-width: 1600px;
-    }
+  .les-choix-de-reponse {
+    padding: var(--espacement);
+  }
 
-    main.intro>div {
-        flex: 1 1 100%;
-    }
-
-    .les-choix-de-reponse {
-        padding: var(--espacement);
-    }
-
-    div.choix {
-        margin: 0.4rem;
-        width: 40vmin;
-        height: 40vmin;
-    }
+  div.choix {
+    margin: 0.4rem;
+    width: 40vmin;
+    height: 40vmin;
+  }
 }

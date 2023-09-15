@@ -120,6 +120,12 @@ function afficherUneImage() {
   //on augmente le numéro de l'index
   noIndex++;
 
+  //on applique la classe .carrousel_img--activer
+//on applique la classe .carrousel_img--activer
+
+carrouselImagesClasse.classList.add("carrousel_img-activer")
+  
+
   //On réinitialise le compteur s'il atteint la fin de l'index
   if (noIndex == carrouselImages.length) {
     noIndex = 0;
