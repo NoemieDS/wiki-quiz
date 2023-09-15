@@ -78,23 +78,9 @@ body {
 
 .carrousel_img-activer {
     opacity: 1;
-    transition: opacity 0.5s ease-in-out; /* Ajoutez une transition de 0,5 seconde avec un effet d'entrée/sortie en douceur */
+   transition: opacity 0.5s ease-in-out; 
 }
 
-
-/* Animations CSS
-        =============================================== */
-@keyframes apparition-image {
-  0%, 100% {
-    opacity: 1;
-  }
-45%, 65% {
-    opacity: 1;
-}
-  50% {
-    opacity: 0.1;
-  }
-}
 
 main {
   width: 100%;
